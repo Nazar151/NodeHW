@@ -1,0 +1,7 @@
+module.exports = {
+  SUCCESS: 200,
+  CREATED: 201,
+  DELETED: 202,
+  INCORRECT_REQUEST: 400,
+  UPDATED: 203
+};
