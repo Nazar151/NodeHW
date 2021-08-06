@@ -1,0 +1,12 @@
+const router = require('express').Router();
+
+const { authController } = require('../controllers');
+const { authMiddleware } = require('../middlewares');
+const { usersMiddleware } = require('../middlewares')
+
+router.post('/',authMiddleware.isLoginAndPasswordCorrect, authController.identificationUser)
+
+router.post('/login', authMiddleware.isLoginAndPasswordCorrect, usersMiddleware.getUserDynamicParam('email'), authController.login);
+router.post('/logout', authMiddleware.checkAccessToken, authController.logout);
+router.post('/refresh', authMiddleware.checkAccessToken, authController.refresh);
+module.exports = router;
